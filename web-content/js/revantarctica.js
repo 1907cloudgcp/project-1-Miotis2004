@@ -4,7 +4,7 @@ let dbObject = {
     techTrack:''
 }
 
-document.getElementById('header').innerText = "YOUR TITLE GOES HERE";
+document.getElementById('header').innerText = "Project 1";
 
 //this assumes your cloud function will return a value named address with the address to an image, in a cloud storage bucket
 async function setUpImages(){
@@ -26,9 +26,9 @@ async function setUpImages(){
 }
 setUpImages()
 
-document.getElementById('calc-label').innerText = "YOU CALC LABEL TEXT"
+document.getElementById('calc-label').innerText = "Calculation:"
 
-document.getElementById('calc-input').type = 'text' || "YOUR INPUT TYPE, REPLACE TEXT"
+document.getElementById('calc-input').type = 'text' || "Integer"
 
 function calcSubmit(event){
     event.preventDefault()
@@ -113,7 +113,7 @@ function createObject(event){
     console.log(event);
     let newObj = {}
     for(key in dbObject){
-        let input = document.getElementById(`${key}id`)
+        let input = document.getElementById('${key}id')
         newObj[key] = input.value
         if(input.type === 'number'){
             input.value = 0
@@ -122,7 +122,7 @@ function createObject(event){
         }
     }
     
-    fetch('YOUR CLOUD FUNCTION URL FOR CREATING A NEW OBJECT',{
+    fetch("https://us-central1-project-1-251114.cloudfunctions.net/save-to-datastore" ,{
         method: 'POST',
         body: JSON.stringify(newObj)
     })
